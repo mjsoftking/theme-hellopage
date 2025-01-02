@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title th:text="${post.spec.title + ' - ' + site.title}"></title>
+    <title th:text="${singlePage.spec.title + ' - ' + site.title}"></title>
     <script th:src="@{/assets/js/jquery.min.js?v={version}(version=${theme.spec.version})}"
         type="application/javascript"></script>
     <link th:href="@{/assets/css/bootstrap.min.css?v={version}(version=${theme.spec.version})}" type="text/css"
@@ -126,17 +126,17 @@
 
     <!-- 页面内容 -->
     <div class="container" style="margin-top:10vh; position: relative; z-index: 100;">
-        <h2 class="title" th:text="${post.spec.title}"></h2>
+        <h2 class="title" th:text="${singlePage.spec.title}"></h2>
 
         <!-- 文章内容 -->
-        <article class="article" th:utext="${post.content.content}"></article>
+        <article class="article" th:utext="${singlePage.content.content}"></article>
 
         <!-- 评论区 -->
         <div th:if="${haloCommentEnabled}" class="article">
             <halo:comment 
                 group="content.halo.run"
-                kind="Post"
-                th:attr="name=${post.metadata.name}"
+                kind="SinglePage"
+                th:attr="name=${singlePage.metadata.name}"
             />
         </div>
 
