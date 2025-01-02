@@ -24,6 +24,15 @@ spec:
           value: https://bing.ee123.net/img/
           label: 首页背景
           help: 支持图片和视频（视频只支持mp4格式）
+        - $formkit: radio
+          name: cover_type
+          label: 背景图片位置
+          value: "false"
+          options:
+            - label: 跟随滚动
+              value: "true"
+            - label: 固定位置
+              value: "false"
     
     - group: search
       label: 搜索引擎配置

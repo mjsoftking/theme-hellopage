@@ -16,6 +16,9 @@
 <body>
     <!-- 页面背景 -->
     <div class="banner-video">
+        <th:block th:if="${theme.config.style.cover_type == 'false'}">
+            <style>.banner-video{position: fixed !important;}</style>
+        </th:block>
         <th:block
             th:if="${#strings.toLowerCase(#strings.substring(theme.config.style.cover_img, #strings.length(theme.config.style.cover_img) - 4))} == '.mp4'">
             <video autoplay loop muted>
