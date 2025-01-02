@@ -1,25 +1,30 @@
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="https://www.thymeleaf.org" th:fragment="html (head,content)">
+
+<html lang="zh-CN" xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title th:text="${site.title}"></title>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" type="application/javascript"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" type="text/css"
+    <script th:src="@{/assets/js/jquery.min.js?v={version}(version=${theme.spec.version})}"
+        type="application/javascript"></script>
+    <link th:href="@{/assets/css/bootstrap.min.css?v={version}(version=${theme.spec.version})}" type="text/css"
         rel="stylesheet">
-    <script src="https://at.alicdn.com/t/font_1230786_ewprpwrczvj.js"></script>
-    <link rel="stylesheet" th:href="@{/assets/css/main.css?v={version}(version=${theme.spec.version})}" />
+    <link th:href="@{/assets/css/style.css?v={version}(version=${theme.spec.version})}" type="text/css"
+        rel="stylesheet">
     <script th:src="@{/assets/js/sou.js?v={version}(version=${theme.spec.version})}"></script>
-    <script th:src="${theme.config.style.iconfont_url}"></script>
-    <th:block th:if="${head != null}">
-        <th:block th:replace="${head}" />
-    </th:block>
 </head>
 
 <body>
-    <div class="banner">
-        <img th:src=${theme.config.style.cover_img} />
+    <div class="banner-video">
+        <th:block th:if="${#strings.toLowerCase(#strings.substring(theme.config.style.cover_img, #strings.length(theme.config.style.cover_img) - 4))} == '.mp4'">
+            <video autoplay loop muted>
+                <source th:src="${theme.config.style.cover_img}" type="video/mp4">
+            </video>
+        </th:block>
+        <th:block th:unless="${#strings.toLowerCase(#strings.substring(theme.config.style.cover_img, #strings.length(theme.config.style.cover_img) - 4))} == '.mp4'">
+            <img th:src=${theme.config.style.cover_img} />
+        </th:block>
         <div class="bottom-cover"
             style="background-image: linear-gradient(rgba(255, 255, 255, 0) 0%, rgb(244 248 251 / 0.6) 50%, rgb(244 248 251) 100%);">
         </div>

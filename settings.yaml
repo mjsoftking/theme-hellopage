@@ -32,7 +32,7 @@ spec:
         - $formkit: attachment
           name: cover_img
           value: https://bing.ee123.net/img/
-          label: 首页背景图片
+          label: 首页背景（视频只支持mp4格式）
         - $formkit: text
           name: h2_title
           value: 上网，从这里开始！
