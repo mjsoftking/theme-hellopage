@@ -2,22 +2,22 @@ apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 metadata:
   name: theme-hellopage
-#  annotations:
-#    "store.halo.run/app-id": ""
+  annotations:
+    "store.halo.run/app-id": "app-LyKey"
 spec:
   displayName: HelloPage
   author:
     name: Anye
-    website: "https://www.anye.xyz"
+    website: https://www.anye.xyz
   description: 基于 Halo 的导航主题
-  logo: "https://www.halo.run/logo"
-  homepage: "https://github.com/Anyexyz/theme-hellopage#readme"
-  repo: "https://github.com/Anyexyz/theme-hellopage"
-  issues: "https://github.com/Anyexyz/theme-hellopage/issues"
-  settingName: "theme-hellopage-setting"
-  configMapName: "theme-hellopage-configMap"
-  version: "1.0.1"
-  requires: ">=2.14.0"
+  logo: https://www.halo.run/logo
+  homepage: https://github.com/Anyexyz/theme-hellopage#readme
+  repo: https://github.com/Anyexyz/theme-hellopage
+  issues: https://github.com/Anyexyz/theme-hellopage/issues
+  settingName: theme-hellopage-setting
+  configMapName: theme-hellopage-configMap
+  version: "1.1.0"
+  requires: ">=2.19.0"
   license:
     - name: "GPL-3.0"
       url: "https://github.com/Anyexyz/theme-hellopage/blob/main/LICENSE"

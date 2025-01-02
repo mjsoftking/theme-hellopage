@@ -37,5 +37,5 @@ HelloPage 是一款简洁的导航页主题，适用于 Halo 系统，可用于�
 
 ## 欢迎关注
 
-- [个人博客](https://www.anye.xyz/)
-- [水滴基地](https://www.sdbase.cn/)
+- [Anyeの小站](https://www.anye.xyz/)
+- [AnyeのSiet](https://www.anye.in/)

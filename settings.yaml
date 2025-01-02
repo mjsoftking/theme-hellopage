@@ -2,8 +2,8 @@ apiVersion: v1alpha1
 kind: Setting
 metadata:
   name: theme-hellopage-setting
-#  annotations:
-#    "store.halo.run/app-id": ""
+  annotations:
+    "store.halo.run/app-id": "app-LyKey"
 spec:
   forms:
     - group: nav_info
