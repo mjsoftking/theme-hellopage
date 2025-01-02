@@ -33,7 +33,25 @@ spec:
               value: "true"
             - label: 固定位置
               value: "false"
-    
+
+    - group: html_inject
+      label: 代码注入
+      formSchema:
+        - $formkit: code
+          name: html_inject_1
+          label: 搜索框下方
+          value: ""
+          height: 100px
+          language: html
+          help: 搜索框下方注入html代码
+        - $formkit: code
+          name: "html_inject_2"
+          label: 页面底部
+          value: '<div id="lytoday"></div><script src="https://lytoday.lylme.com/"></script>'
+          height: 100px
+          language: html
+          help: 页面底部注入html代码
+
     - group: search
       label: 搜索引擎配置
       formSchema:

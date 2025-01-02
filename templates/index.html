@@ -17,7 +17,11 @@
     <!-- 页面背景 -->
     <div class="banner-video">
         <th:block th:if="${theme.config.style.cover_type == 'false'}">
-            <style>.banner-video{position: fixed !important;}</style>
+            <style>
+                .banner-video {
+                    position: fixed !important;
+                }
+            </style>
         </th:block>
         <th:block
             th:if="${#strings.toLowerCase(#strings.substring(theme.config.style.cover_img, #strings.length(theme.config.style.cover_img) - 4))} == '.mp4'">
@@ -159,6 +163,9 @@
             </div>
         </div>
 
+        <!-- 代码注入位置1 - 搜索栏下方 -->
+        <th:block th:utext="${theme.config.html_inject.html_inject_1}"></th:block>
+
         <!-- 导航列表 -->
         <th:block th:each="group : ${linkFinder.groupBy()}"
             th:if="${#annotations.getOrDefault(group, 'show_on_hellopage', 'true') == 'true'}">
@@ -196,29 +203,33 @@
             <a title="返回顶部" onclick="window.scrollTo(0,0);return false;" href="#top" class="back-top"></a>
         </div>
 
+        <!-- 代码注入位置2 - 页面底部 -->
+        <th:block th:utext="${theme.config.html_inject.html_inject_2}"></th:block>
+
+        <div class="mt-5 mb-3 footer text-muted text-center">
+            <div th:if="${not #strings.isEmpty(theme.config.beian.icp_text)}">
+                <!-- ICP备案 -->
+                <a class="icp" href="http://beian.miit.gov.cn/" target="_blank"
+                    th:text="${theme.config.beian.icp_text}">
+                </a>
+            </div>
+            <div th:if="${not #strings.isEmpty(theme.config.beian.gongan_text)}">
+                <!-- 公安备案 -->
+                <a class="icp"
+                    th:href="'http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=' + ${#strings.substring(theme.config.beian.gongan_text, 10, 20)}"
+                    target="_blank" rel="nofollow noopener">
+                    <img th:src="@{/assets/img/gongan_beian.png}" alt="公安网备" width="16" height="16">
+                    <span th:text="${theme.config.beian.gongan_text}"></span>
+                </a>
+            </div>
+            <!-- 版权信息 -->
+            <p>Copyright ©[[${#dates.format(new java.util.Date().getTime(), 'yyyy')}]] <a th:href="${site.url}"
+                    th:text="${site.title}"></a>. All Rights Reserved. Powered by <a href="https://halo.run"
+                    target="_blank">Halo [[${site.version}]]</a></p>
+            <halo:footer />
+        </div>
     </div>
 
-    <div class="mt-5 mb-3 footer text-muted text-center">
-        <!-- ICP备案 -->
-        <div th:if="${not #strings.isEmpty(theme.config.beian.icp_text)}">
-            <a class="icp" href="http://beian.miit.gov.cn/" target="_blank" th:text="${theme.config.beian.icp_text}">
-            </a>
-        </div>
-        <!-- 公安备案 -->
-        <div th:if="${not #strings.isEmpty(theme.config.beian.gongan_text)}">
-            <a class="icp"
-                th:href="'http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=' + ${#strings.substring(theme.config.beian.gongan_text, 10, 20)}"
-                target="_blank" rel="nofollow noopener">
-                <img th:src="@{/assets/img/gongan_beian.png}" alt="公安网备" width="16" height="16">
-                <span th:text="${theme.config.beian.gongan_text}"></span>
-            </a>
-        </div>
-        <!-- 版权信息 -->
-        <p>Copyright ©[[${#dates.format(new java.util.Date().getTime(), 'yyyy')}]] <a th:href="${site.url}"
-                th:text="${site.title}"></a>. All Rights Reserved. Powered by <a href="https://halo.run"
-                target="_blank">Halo [[${site.version}]]</a></p>
-        <halo:footer />
-    </div>
 </body>
 
 </html>
