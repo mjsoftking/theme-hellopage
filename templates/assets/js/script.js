@@ -134,29 +134,7 @@ $(function(){
     })
 })
 
-//点击空白处关闭导航
-
-//显示日期和时间
-function show() {
-	var date = new Date();
-	var y = date.getFullYear();     //获取年份  
-    var m =date.getMonth()+1;   //获取月份  返回0-11  
-    var d = date.getDate(); // 获取日  
-    var w = date.getDay();   //获取星期几  返回0-6   (0=星期天) 
-    var ww = ' 星期'+'日一二三四五六'.charAt(new Date().getDay()) ;//星期几
-	var format = [
-		("0" + date.getHours()).substr(-2), ("0" + date.getMinutes()).substr(-2)
-	].join(":");
-	
-    document.getElementById("show_date").innerHTML =  y+"年"+m+"月"+d+"日 "+ww; 
-	document.getElementById("show_time").innerHTML = format;
-	return show;
-}
-setInterval(show(), 1000);
- 
-
-!
-function() {
+!function() {
 	function g() {
 		h(), i(), j(), k()
 	}
