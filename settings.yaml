@@ -28,19 +28,8 @@ spec:
     - group: search
       label: 搜索引擎配置
       formSchema:
-        - $formkit: radio
-          name: switch
-          id: switch
-          label: 是否显示搜索框
-          value: "true"
-          options: 
-          - label: 显示
-            value: "true"
-          - label: 不显示
-            value: "false"
         - $formkit: repeater
           name: search_links
-          if: $get(switch).value == "true"
           label: 搜索引擎链接
           value:
           - id: "metaso"
