@@ -185,6 +185,7 @@ spec:
       language: html
       help: 方案1：粘贴图标的SVG代码(推荐)；方案2：使用图片地址，需要img标签，如<img src="/assets/img/logo.png" />
     - $formkit: radio
+      id: show_on_hellopage
       name: show_on_hellopage
       label: 显示在HelloPage中
       help: 控制此分组是否显示在HelloPage中
@@ -193,6 +194,17 @@ spec:
         - label: 显示
           value: "true"
         - label: 不显示
+          value: "false"
+    - $formkit: radio
+      name: login_visible_group
+      if: $get(show_on_hellopage).value == "true"
+      label: 是否登录可见
+      help: 控制此分组是否在用户登录后显示
+      value: "false"
+      options:
+        - label: 是
+          value: "true"
+        - label: 否
           value: "false"
 ---
 
@@ -240,3 +252,13 @@ spec:
       height: 100px
       language: html
       help: 方案1：粘贴图标的SVG代码(推荐)；方案2：使用图片地址，需要img标签，如<img src="/assets/img/logo.png" />
+    - $formkit: radio
+      name: login_visible_link
+      label: 是否登录可见
+      help: 控制此链接是否在用户登录后显示
+      value: "false"
+      options:
+        - label: 是
+          value: "true"
+        - label: 否
+          value: "false"

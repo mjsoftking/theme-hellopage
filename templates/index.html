@@ -13,7 +13,7 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body th:with="user_login = ${#authentication.name != 'anonymousUser'}">
     <!-- 页面背景 -->
     <div class="banner-video">
         <th:block th:if="${theme.config.style.cover_type == 'false'}">
@@ -168,14 +168,18 @@
 
         <!-- 导航列表 -->
         <th:block th:each="group : ${linkFinder.groupBy()}"
-            th:if="${#annotations.getOrDefault(group, 'show_on_hellopage', 'true') == 'true'}">
+                  th:if="${#annotations.getOrDefault(group, 'show_on_hellopage', 'true') == 'true' &&
+                  (#annotations.getOrDefault(group, 'login_visible_group', 'false') != 'true' ||
+                  (#annotations.getOrDefault(group, 'login_visible_group', 'false') == 'true' && user_login))}">
 
             <ul class="mylist row" th:if="${#lists.size(group.links) > 0}">
                 <li class="title" th:if="${group.spec.displayName != ''}">
                     <th:block th:utext="${#annotations.getOrDefault(group, 'icon', '')}"></th:block>
                     <span th:text="${group.spec.displayName}"></span>
                 </li>
-                <li class="col-3 col-sm-3 col-md-3 col-lg-1" th:each="link : ${group.links}" :key="i">
+                <li class="col-3 col-sm-3 col-md-3 col-lg-1" th:each="link : ${group.links}" :key="i"
+                    th:if="${#annotations.getOrDefault(link, 'login_visible_link', 'false') != 'true' ||
+                    (#annotations.getOrDefault(link, 'login_visible_link', 'false') == 'true' && user_login)}">
                     <a rel="nofollow" th:with="to_post_radio = ${#annotations.get(link, 'to_post_radio')},
                                  to_post = ${#annotations.get(link, 'to_post')},
                                  shouldLinkToPost = ${to_post_radio == 'true' and to_post != null and to_post != ''}"
